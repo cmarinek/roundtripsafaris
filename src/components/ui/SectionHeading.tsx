@@ -1,13 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import ScrollReveal from "./ScrollReveal";
 
 interface SectionHeadingProps {
   label?: string;
   title: string;
   subtitle?: string;
   centered?: boolean;
-  light?: boolean;
+  size?: "default" | "lg";
+  align?: "center" | "left";
 }
 
 export default function SectionHeading({
@@ -15,41 +16,46 @@ export default function SectionHeading({
   title,
   subtitle,
   centered = true,
-  light = false,
+  size = "default",
+  align,
 }: SectionHeadingProps) {
+  const isCenter = align ? align === "center" : centered;
+  const headingSize =
+    size === "lg"
+      ? "text-4xl md:text-5xl lg:text-6xl"
+      : "text-3xl md:text-4xl lg:text-5xl";
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
-      className={`mb-12 ${centered ? "text-center" : ""}`}
-    >
+    <div className={`mb-16 ${isCenter ? "text-center" : ""}`}>
       {label && (
-        <span
-          className={`inline-block text-sm font-semibold tracking-widest uppercase mb-3 ${
-            light ? "text-amber-300" : "text-amber-600"
-          }`}
-        >
-          {label}
-        </span>
+        <ScrollReveal delay={0}>
+          <div className={`flex items-center gap-4 mb-5 ${isCenter ? "justify-center" : ""}`}>
+            <div className="h-px w-8 bg-amber-600/40" />
+            <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-amber-500">
+              {label}
+            </span>
+            <div className="h-px w-8 bg-amber-600/40" />
+          </div>
+        </ScrollReveal>
       )}
-      <h2
-        className={`text-3xl md:text-4xl lg:text-5xl font-bold font-serif leading-tight ${
-          light ? "text-white" : "text-earth-800"
-        }`}
-      >
-        {title}
-      </h2>
+      <ScrollReveal delay={0.1}>
+        <h2
+          className={`${headingSize} font-bold font-serif leading-[0.95] text-white`}
+        >
+          {title}
+        </h2>
+      </ScrollReveal>
       {subtitle && (
-        <p
-          className={`mt-4 text-lg max-w-2xl ${centered ? "mx-auto" : ""} ${
-            light ? "text-warm-300" : "text-warm-700"
-          }`}
-        >
-          {subtitle}
-        </p>
+        <ScrollReveal delay={0.2}>
+          <p
+            className={`mt-5 text-lg max-w-2xl text-warm-400 leading-relaxed ${
+              isCenter ? "mx-auto" : ""
+            }`}
+          >
+            {subtitle}
+          </p>
+        </ScrollReveal>
       )}
-    </motion.div>
+    </div>
   );
 }

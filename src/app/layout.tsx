@@ -6,27 +6,33 @@ import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: {
-    default: "RoundTrip Safaris | Premium African Safari Experiences",
+    default: "RoundTrip Safaris | Luxury African Safari Experiences Since 2003",
     template: "%s | RoundTrip Safaris",
   },
   description:
-    "Experience the magic of Africa with RoundTrip Safaris. Premium wildlife safaris, luxury accommodations, and expert guides across Kenya, Tanzania, and Botswana. Based in Plano, TX.",
+    "Experience the magic of Africa with RoundTrip Safaris. Premium wildlife safaris, luxury accommodations, and expert guides across Kenya, Tanzania, Botswana, Uganda, and Rwanda. Based in Plano, TX. Established 2003.",
   keywords: [
     "African safari",
     "Kenya safari",
     "Tanzania safari",
     "Botswana safari",
+    "Uganda safari",
+    "Rwanda safari",
     "luxury safari",
     "wildlife safari",
     "safari tours",
+    "honeymoon safari",
+    "gorilla trekking",
     "Plano TX travel agent",
     "Dallas safari",
     "charity safari",
+    "beach holidays Africa",
+    "Kilimanjaro trek",
   ],
   openGraph: {
-    title: "RoundTrip Safaris | Premium African Safari Experiences",
+    title: "RoundTrip Safaris | Luxury African Safari Experiences Since 2003",
     description:
-      "Experience the magic of Africa with premium wildlife safaris, luxury accommodations, and expert guides.",
+      "Premium wildlife safaris, luxury accommodations, and expert guides across East and Southern Africa.",
     type: "website",
     locale: "en_US",
     siteName: "RoundTrip Safaris",
@@ -44,7 +50,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap"
           rel="stylesheet"
         />
         <noscript>
@@ -67,14 +73,15 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased bg-earth-900 text-earth-50">
         <Toaster
           position="top-right"
           toastOptions={{
             style: {
-              background: "#2C1810",
-              color: "#FDF8F0",
+              background: "#1C1512",
+              color: "#F5F0EB",
               borderRadius: "12px",
+              border: "1px solid rgba(255,255,255,0.06)",
             },
           }}
         />

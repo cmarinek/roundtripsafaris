@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 
 interface AnimatedCounterProps {
   end: number;
@@ -40,18 +40,13 @@ export default function AnimatedCounter({
 
   return (
     <div ref={ref} className="text-center">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-4xl md:text-5xl font-bold text-amber-400 font-serif"
-      >
+      <div className="text-4xl md:text-5xl font-bold text-amber-500 font-serif">
         {prefix}
         {count}
         {suffix}
-      </motion.div>
-      <p className="text-warm-300 mt-2 text-sm uppercase tracking-wider font-medium">
+      </div>
+      <div className="divider-amber mx-auto mt-3" />
+      <p className="text-warm-400 mt-3 text-[11px] uppercase tracking-[0.2em] font-medium">
         {label}
       </p>
     </div>
