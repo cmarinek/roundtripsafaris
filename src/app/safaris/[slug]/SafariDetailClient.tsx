@@ -3,13 +3,14 @@
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   MapPin, Clock, Users, Star, Shield, ChevronRight, Check, X as XIcon,
-  ArrowRight, Calendar, Mountain,
+  ArrowRight, Mountain,
 } from "lucide-react";
 import { getSafariBySlug, safaris } from "@/lib/data/safaris";
 import SafariCard from "@/components/ui/SafariCard";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import FullWidthCTA from "@/components/ui/FullWidthCTA";
 
 export default function SafariDetailClient() {
   const params = useParams();
@@ -17,10 +18,10 @@ export default function SafariDetailClient() {
 
   if (!safari) {
     return (
-      <div className="min-h-screen flex items-center justify-center pt-20">
+      <div className="min-h-screen flex items-center justify-center pt-20 bg-earth-900">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-earth-800 mb-4">Safari Not Found</h1>
-          <Link href="/safaris" className="text-amber-600 hover:underline">
+          <h1 className="text-3xl font-bold text-white mb-4 font-serif">Safari Not Found</h1>
+          <Link href="/safaris" className="text-amber-500 hover:text-amber-400 transition-colors">
             Browse all safaris
           </Link>
         </div>
@@ -35,7 +36,7 @@ export default function SafariDetailClient() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[60vh] min-h-[450px] flex items-end overflow-hidden">
+      <section className="relative h-[65vh] min-h-[500px] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src={safari.image}
@@ -45,226 +46,204 @@ export default function SafariDetailClient() {
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-earth-900/90 via-earth-900/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-earth-900 via-earth-900/40 to-earth-900/10" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 w-full">
           <div className="animate-hero">
             {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-warm-300 text-sm mb-4">
-              <Link href="/" className="hover:text-amber-400 transition-colors">Home</Link>
-              <ChevronRight className="w-4 h-4" />
-              <Link href="/safaris" className="hover:text-amber-400 transition-colors">Safaris</Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-amber-400">{safari.title}</span>
+            <div className="flex items-center gap-2 text-warm-400 text-xs tracking-wide mb-5">
+              <Link href="/" className="hover:text-amber-500 transition-colors">Home</Link>
+              <ChevronRight className="w-3.5 h-3.5" />
+              <Link href="/safaris" className="hover:text-amber-500 transition-colors">Safaris</Link>
+              <ChevronRight className="w-3.5 h-3.5" />
+              <span className="text-amber-500">{safari.title}</span>
             </div>
 
-            <span className="inline-flex items-center px-3 py-1 bg-amber-600/80 backdrop-blur-sm text-white text-xs font-semibold rounded-full uppercase tracking-wider mb-4">
+            <span className="inline-flex items-center px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 text-amber-400 text-[10px] font-semibold rounded-full uppercase tracking-[0.15em] mb-4">
               {safari.category}
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-serif">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-serif leading-[0.95]">
               {safari.title}
             </h1>
-            <p className="mt-3 text-lg text-warm-200">{safari.tagline}</p>
+            <p className="mt-4 text-lg text-warm-300">{safari.tagline}</p>
 
-            <div className="flex flex-wrap items-center gap-6 mt-6 text-warm-200">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-amber-400" />
+            <div className="flex flex-wrap items-center gap-5 mt-6 text-sm text-warm-300">
+              <span className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-amber-500" />
                 {safari.destination}
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5 text-amber-400" />
+              </span>
+              <span className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-amber-500" />
                 {safari.duration}
-              </div>
-              <div className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-amber-400" />
+              </span>
+              <span className="flex items-center gap-2">
+                <Users className="w-4 h-4 text-amber-500" />
                 {safari.groupSize}
-              </div>
-              <div className="flex items-center gap-2">
-                <Mountain className="w-5 h-5 text-amber-400" />
+              </span>
+              <span className="flex items-center gap-2">
+                <Mountain className="w-4 h-4 text-amber-500" />
                 {safari.difficulty}
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
                 <span className="font-semibold text-white">{safari.rating}</span>
-                <span className="text-warm-300">({safari.reviewCount} reviews)</span>
-              </div>
+                <span className="text-warm-400">({safari.reviewCount} reviews)</span>
+              </span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-16 bg-warm-50">
+      <section className="py-16 bg-earth-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Main Content */}
-            <div className="lg:col-span-2 space-y-12">
+            <div className="lg:col-span-2 space-y-16">
               {/* Description */}
-              <div>
-                <h2 className="text-2xl font-bold text-earth-800 font-serif mb-4">
+              <ScrollReveal>
+                <h2 className="text-2xl font-bold text-white font-serif mb-4">
                   About This Safari
                 </h2>
-                <p className="text-warm-700 leading-relaxed text-lg">
+                <p className="text-warm-300 leading-relaxed text-lg">
                   {safari.description}
                 </p>
-              </div>
+              </ScrollReveal>
 
               {/* Gallery */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <h2 className="text-2xl font-bold text-earth-800 font-serif mb-4">
+              <ScrollReveal>
+                <h2 className="text-2xl font-bold text-white font-serif mb-5">
                   Gallery
                 </h2>
                 <div className="grid grid-cols-2 gap-4">
                   {safari.gallery.map((img, i) => (
-                    <div key={i} className="relative h-48 md:h-56 rounded-xl overflow-hidden">
+                    <div key={i} className="relative h-48 md:h-56 rounded-xl overflow-hidden group">
                       <Image
                         src={img}
                         alt={`${safari.title} gallery ${i + 1}`}
                         fill
-                        className="object-cover hover:scale-105 transition-transform duration-500"
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
                         sizes="(max-width: 768px) 50vw, 25vw"
                       />
+                      <div className="absolute inset-0 bg-earth-900/0 group-hover:bg-earth-900/20 transition-colors duration-500" />
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </ScrollReveal>
 
               {/* Highlights */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <h2 className="text-2xl font-bold text-earth-800 font-serif mb-4">
+              <ScrollReveal>
+                <h2 className="text-2xl font-bold text-white font-serif mb-5">
                   Safari Highlights
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {safari.highlights.map((hl) => (
-                    <div key={hl} className="flex items-start gap-3 bg-white p-4 rounded-xl border border-warm-200/50">
-                      <Check className="w-5 h-5 text-safari-500 mt-0.5 shrink-0" />
-                      <span className="text-warm-700">{hl}</span>
+                    <div key={hl} className="flex items-start gap-3 glass-card rounded-xl p-4">
+                      <Check className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" />
+                      <span className="text-warm-200">{hl}</span>
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </ScrollReveal>
 
               {/* Itinerary */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <h2 className="text-2xl font-bold text-earth-800 font-serif mb-6">
-                  Day-by-Day Itinerary
-                </h2>
-                <div className="space-y-4">
+              <div>
+                <ScrollReveal>
+                  <h2 className="text-2xl font-bold text-white font-serif mb-6">
+                    Day-by-Day Itinerary
+                  </h2>
+                </ScrollReveal>
+                <div className="relative space-y-4">
+                  {/* Timeline line */}
+                  <div className="absolute left-7 top-6 bottom-6 w-px bg-gradient-to-b from-amber-500/50 via-amber-500/20 to-transparent hidden md:block" />
                   {safari.itinerary.map((day, i) => (
-                    <motion.div
-                      key={day.day}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: i * 0.05 }}
-                      className="bg-white rounded-xl p-6 border border-warm-200/50 shadow-sm"
-                    >
-                      <div className="flex items-start gap-4">
-                        <div className="w-14 h-14 bg-amber-100 rounded-xl flex flex-col items-center justify-center shrink-0">
-                          <span className="text-xs text-amber-600 font-medium uppercase">Day</span>
-                          <span className="text-lg font-bold text-amber-700">{day.day}</span>
+                    <ScrollReveal key={day.day} delay={i * 0.05}>
+                      <div className="glass-card rounded-xl p-6 flex items-start gap-4 relative">
+                        <div className="w-14 h-14 bg-amber-600/15 border border-amber-500/20 rounded-xl flex flex-col items-center justify-center shrink-0">
+                          <span className="text-[10px] text-amber-400 font-medium uppercase tracking-wider">Day</span>
+                          <span className="text-lg font-bold text-amber-300">{day.day}</span>
                         </div>
                         <div>
-                          <h3 className="text-lg font-bold text-earth-800">{day.title}</h3>
-                          <p className="text-warm-600 mt-1 leading-relaxed">{day.description}</p>
+                          <h3 className="text-lg font-bold text-white">{day.title}</h3>
+                          <p className="text-warm-400 mt-1 leading-relaxed">{day.description}</p>
                         </div>
                       </div>
-                    </motion.div>
+                    </ScrollReveal>
                   ))}
                 </div>
-              </motion.div>
+              </div>
 
               {/* Included / Not Included */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
+              <ScrollReveal>
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
-                    <h2 className="text-2xl font-bold text-earth-800 font-serif mb-4">
+                    <h2 className="text-2xl font-bold text-white font-serif mb-5">
                       What&apos;s Included
                     </h2>
                     <div className="space-y-3">
                       {safari.included.map((item) => (
                         <div key={item} className="flex items-start gap-3">
-                          <Check className="w-5 h-5 text-safari-500 mt-0.5 shrink-0" />
-                          <span className="text-warm-700">{item}</span>
+                          <Check className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" />
+                          <span className="text-warm-300">{item}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-earth-800 font-serif mb-4">
+                    <h2 className="text-2xl font-bold text-white font-serif mb-5">
                       Not Included
                     </h2>
                     <div className="space-y-3">
                       {safari.notIncluded.map((item) => (
                         <div key={item} className="flex items-start gap-3">
-                          <XIcon className="w-5 h-5 text-red-400 mt-0.5 shrink-0" />
-                          <span className="text-warm-700">{item}</span>
+                          <XIcon className="w-5 h-5 text-warm-500 mt-0.5 shrink-0" />
+                          <span className="text-warm-400">{item}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </ScrollReveal>
             </div>
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-6">
+              <div className="sticky top-28 space-y-6">
                 {/* Booking Card */}
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-warm-200/50">
+                <div className="glass rounded-2xl p-6 border border-white/10">
                   <div className="text-center mb-6">
-                    <div className="text-sm text-warm-600">Starting from</div>
-                    <div className="text-4xl font-bold text-earth-800 font-serif">
+                    <div className="text-[11px] font-semibold tracking-[0.2em] uppercase text-warm-400">Starting from</div>
+                    <div className="text-4xl font-bold text-white font-serif mt-1">
                       ${safari.price.toLocaleString()}
                     </div>
-                    <div className="text-sm text-warm-500">per person</div>
+                    <div className="text-sm text-warm-500 mt-1">per person</div>
                   </div>
 
-                  <div className="space-y-3 mb-6 text-sm">
-                    <div className="flex justify-between py-2 border-b border-warm-100">
-                      <span className="text-warm-600">Duration</span>
-                      <span className="font-medium text-earth-800">{safari.duration}</span>
+                  <div className="space-y-0 mb-6 text-sm">
+                    <div className="flex justify-between py-3 border-b border-white/5">
+                      <span className="text-warm-400">Duration</span>
+                      <span className="font-medium text-white">{safari.duration}</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-warm-100">
-                      <span className="text-warm-600">Group Size</span>
-                      <span className="font-medium text-earth-800">{safari.groupSize}</span>
+                    <div className="flex justify-between py-3 border-b border-white/5">
+                      <span className="text-warm-400">Group Size</span>
+                      <span className="font-medium text-white">{safari.groupSize}</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-warm-100">
-                      <span className="text-warm-600">Difficulty</span>
-                      <span className="font-medium text-earth-800">{safari.difficulty}</span>
+                    <div className="flex justify-between py-3 border-b border-white/5">
+                      <span className="text-warm-400">Difficulty</span>
+                      <span className="font-medium text-white">{safari.difficulty}</span>
                     </div>
-                    <div className="flex justify-between py-2">
-                      <span className="text-warm-600">Destination</span>
-                      <span className="font-medium text-earth-800">{safari.destination}</span>
+                    <div className="flex justify-between py-3">
+                      <span className="text-warm-400">Destination</span>
+                      <span className="font-medium text-white">{safari.destination}</span>
                     </div>
                   </div>
 
                   <Link
                     href={`/booking?safari=${safari.slug}`}
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-amber-600 hover:bg-amber-500 text-white font-semibold rounded-full transition-all hover:shadow-lg group text-lg"
+                    className="w-full btn-primary text-sm tracking-[0.05em] uppercase justify-center group"
                   >
                     Book This Safari
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
 
                   <p className="text-center text-xs text-warm-500 mt-3">
@@ -273,15 +252,15 @@ export default function SafariDetailClient() {
                 </div>
 
                 {/* Contact Card */}
-                <div className="bg-earth-800 rounded-2xl p-6 text-center">
-                  <Shield className="w-8 h-8 text-amber-400 mx-auto mb-3" />
+                <div className="glass-card rounded-2xl p-6 text-center">
+                  <Shield className="w-8 h-8 text-amber-500 mx-auto mb-3" />
                   <h3 className="text-white font-bold mb-2">Need Help Deciding?</h3>
                   <p className="text-warm-400 text-sm mb-4">
                     Our safari experts are happy to answer any questions.
                   </p>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-full transition-colors text-sm"
+                    className="btn-ghost text-xs tracking-[0.05em] uppercase"
                   >
                     Contact Us
                   </Link>
@@ -292,10 +271,13 @@ export default function SafariDetailClient() {
 
           {/* Related Safaris */}
           <div className="mt-24">
-            <h2 className="text-3xl font-bold text-earth-800 font-serif mb-8 text-center">
-              You Might Also Like
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
+            <ScrollReveal>
+              <div className="divider-amber mx-auto mb-6" />
+              <h2 className="text-3xl md:text-4xl font-bold text-white font-serif text-center leading-[0.95]">
+                You Might Also Like
+              </h2>
+            </ScrollReveal>
+            <div className="grid md:grid-cols-3 gap-8 mt-10">
               {relatedSafaris.map((s, i) => (
                 <SafariCard key={s.slug} safari={s} index={i} />
               ))}
@@ -303,6 +285,9 @@ export default function SafariDetailClient() {
           </div>
         </div>
       </section>
+
+      {/* Pre-footer CTA */}
+      <FullWidthCTA />
     </>
   );
 }

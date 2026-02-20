@@ -4,7 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import SectionHeading from "@/components/ui/SectionHeading";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import FullWidthCTA from "@/components/ui/FullWidthCTA";
 
 const galleryImages = [
   { src: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80", alt: "Elephants on the savanna", category: "wildlife" },
@@ -52,27 +53,16 @@ export default function GalleryPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[50vh] min-h-[350px] flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=1920&q=80"
-            alt="Safari golden hour"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-earth-900/80 via-earth-900/60 to-earth-900/40" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-hero">
-            <span className="inline-block text-sm font-semibold tracking-widest uppercase text-amber-400 mb-3">
+      <section className="relative bg-earth-900 pt-32 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="animate-hero max-w-2xl">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-full text-amber-400 text-[11px] font-semibold tracking-[0.2em] uppercase mb-5">
               Visual Stories
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-serif">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-serif leading-[0.95]">
               Safari Gallery
             </h1>
-            <p className="mt-4 text-lg text-warm-200 max-w-2xl">
+            <p className="mt-4 text-lg text-warm-300 max-w-xl">
               A glimpse into the extraordinary moments our travelers experience.
             </p>
           </div>
@@ -80,24 +70,26 @@ export default function GalleryPage() {
       </section>
 
       {/* Gallery */}
-      <section className="py-16 bg-warm-50">
+      <section className="py-12 bg-earth-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filters */}
-          <div className="flex flex-wrap gap-2 mb-10 justify-center">
-            {categories.map((cat) => (
-              <button
-                key={cat.value}
-                onClick={() => setFilter(cat.value)}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                  filter === cat.value
-                    ? "bg-amber-600 text-white shadow-md"
-                    : "bg-white text-warm-700 hover:bg-warm-100 border border-warm-200"
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
+          <ScrollReveal>
+            <div className="flex flex-wrap gap-2 mb-10 justify-center">
+              {categories.map((cat) => (
+                <button
+                  key={cat.value}
+                  onClick={() => setFilter(cat.value)}
+                  className={`px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all ${
+                    filter === cat.value
+                      ? "bg-amber-600 text-white shadow-lg shadow-amber-600/20"
+                      : "bg-white/5 text-warm-300 border border-white/10 hover:bg-white/10 hover:text-white"
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+          </ScrollReveal>
 
           {/* Grid */}
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
@@ -121,8 +113,8 @@ export default function GalleryPage() {
                     className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                    <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity font-medium">
+                  <div className="absolute inset-0 bg-earth-900/0 group-hover:bg-earth-900/40 transition-colors flex items-center justify-center">
+                    <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium tracking-wide">
                       View
                     </span>
                   </div>
@@ -133,6 +125,9 @@ export default function GalleryPage() {
         </div>
       </section>
 
+      {/* Pre-footer CTA */}
+      <FullWidthCTA />
+
       {/* Lightbox */}
       <AnimatePresence>
         {lightboxIndex !== null && (
@@ -140,26 +135,26 @@ export default function GalleryPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
+            className="fixed inset-0 z-[100] bg-earth-900/98 backdrop-blur-xl flex items-center justify-center p-4"
             onClick={closeLightbox}
           >
             <button
               onClick={closeLightbox}
-              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-10"
+              className="absolute top-6 right-6 text-warm-400 hover:text-white transition-colors z-10"
               aria-label="Close"
             >
               <X className="w-8 h-8" />
             </button>
             <button
               onClick={(e) => { e.stopPropagation(); prevImage(); }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors z-10 p-2"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-warm-400 hover:text-white transition-colors z-10 p-2"
               aria-label="Previous"
             >
               <ChevronLeft className="w-10 h-10" />
             </button>
             <button
               onClick={(e) => { e.stopPropagation(); nextImage(); }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors z-10 p-2"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-warm-400 hover:text-white transition-colors z-10 p-2"
               aria-label="Next"
             >
               <ChevronRight className="w-10 h-10" />
@@ -180,7 +175,7 @@ export default function GalleryPage() {
                 className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
                 sizes="100vw"
               />
-              <p className="text-center text-white/70 mt-4">
+              <p className="text-center text-warm-400 mt-4 text-sm">
                 {filtered[lightboxIndex].alt}
               </p>
             </motion.div>
