@@ -67,11 +67,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-earth-900/80 via-earth-900/60 to-earth-900/40" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className="animate-hero">
             <span className="inline-block text-sm font-semibold tracking-widest uppercase text-amber-400 mb-3">
               Our Story
             </span>
@@ -81,7 +77,7 @@ export default function AboutPage() {
             <p className="mt-4 text-lg text-warm-200 max-w-2xl">
               Born from a love for Africa and a desire to make a difference.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 

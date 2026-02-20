@@ -59,12 +59,7 @@ export default function CharityPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-earth-900/85 via-earth-900/60 to-earth-900/30" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
+          <div className="max-w-3xl animate-hero">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-terra-500/30 backdrop-blur-sm border border-terra-400/30 rounded-full text-terra-200 text-sm font-medium mb-6">
               <Heart className="w-4 h-4" />
               Community Impact
@@ -92,7 +87,7 @@ export default function CharityPage() {
                 Learn More
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
