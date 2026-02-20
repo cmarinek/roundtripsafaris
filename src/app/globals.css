@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-amber-50: #FFF8E1;
+  --color-amber-100: #FFECB3;
+  --color-amber-200: #FFE082;
+  --color-amber-300: #FFD54F;
+  --color-amber-400: #FFCA28;
+  --color-amber-500: #FFC107;
+  --color-amber-600: #D4A017;
+  --color-amber-700: #B8860B;
+  --color-amber-800: #8B6914;
+  --color-amber-900: #5D4E37;
+
+  --color-terra-50: #FBE9E1;
+  --color-terra-100: #F5C7B3;
+  --color-terra-200: #E8A07E;
+  --color-terra-300: #DB7A4A;
+  --color-terra-400: #D16A30;
+  --color-terra-500: #C1440E;
+  --color-terra-600: #A0360B;
+  --color-terra-700: #7F2A09;
+  --color-terra-800: #5E1F06;
+  --color-terra-900: #3D1404;
+
+  --color-safari-50: #F0F4E8;
+  --color-safari-100: #D6E0C0;
+  --color-safari-200: #BBCC97;
+  --color-safari-300: #9FB86E;
+  --color-safari-400: #8BA84F;
+  --color-safari-500: #6B8E23;
+  --color-safari-600: #5C6B3C;
+  --color-safari-700: #4A5A2B;
+  --color-safari-800: #38441F;
+  --color-safari-900: #262E14;
+
+  --color-warm-50: #FFFDF7;
+  --color-warm-100: #FDF8F0;
+  --color-warm-200: #FAF3E8;
+  --color-warm-300: #F5EBD8;
+  --color-warm-400: #E8D5B8;
+  --color-warm-500: #D4BA91;
+  --color-warm-600: #B89B6A;
+  --color-warm-700: #8B7355;
+  --color-warm-800: #5E4D3A;
+  --color-warm-900: #3D2415;
+
+  --color-earth-50: #F5F0EB;
+  --color-earth-100: #E0D5C8;
+  --color-earth-200: #CABAA5;
+  --color-earth-300: #B49F82;
+  --color-earth-400: #9E845F;
+  --color-earth-500: #7A6548;
+  --color-earth-600: #5C4D36;
+  --color-earth-700: #3D3424;
+  --color-earth-800: #2C1810;
+  --color-earth-900: #1A0F0A;
+
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-warm-50);
+  color: var(--color-earth-800);
+  font-family: "Outfit", system-ui, sans-serif;
+}
+
+::selection {
+  background-color: var(--color-amber-200);
+  color: var(--color-earth-900);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-warm-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-warm-500);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-warm-600);
+}
