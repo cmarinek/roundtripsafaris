@@ -47,6 +47,25 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
+        <noscript>
+          <style>{`[style*="opacity"]{opacity:1!important;transform:none!important;}`}</style>
+        </noscript>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.addEventListener('load', function() {
+                setTimeout(function() {
+                  document.querySelectorAll('[style]').forEach(function(el) {
+                    if (getComputedStyle(el).opacity === '0') {
+                      el.style.opacity = '1';
+                      el.style.transform = 'none';
+                    }
+                  });
+                }, 3000);
+              });
+            `,
+          }}
+        />
       </head>
       <body className="antialiased">
         <Toaster

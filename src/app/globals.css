@@ -60,6 +60,70 @@
   --font-serif: "Playfair Display", Georgia, serif;
 }
 
+/* Hero entrance animations (CSS-only, no JS dependency) */
+@keyframes hero-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-fade-in-up-lg {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.animate-hero {
+  animation: hero-fade-in-up 0.6s ease-out both;
+}
+
+.animate-hero-home {
+  animation: hero-fade-in-up-lg 0.8s ease-out 0.2s both;
+}
+
+.animate-hero-badge {
+  animation: hero-fade-in-left 0.5s ease-out 0.5s both;
+}
+
+.animate-fade-in-delayed {
+  animation: fade-in 0.5s ease-out 1.5s both;
+}
+
+.animate-scroll-bounce {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
 html {
   scroll-behavior: smooth;
 }

@@ -43,21 +43,13 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-3xl"
-          >
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 bg-amber-600/30 backdrop-blur-sm border border-amber-400/30 rounded-full text-amber-300 text-sm font-medium mb-6"
+          <div className="max-w-3xl animate-hero-home">
+            <span
+              className="inline-flex items-center gap-2 px-4 py-1.5 bg-amber-600/30 backdrop-blur-sm border border-amber-400/30 rounded-full text-amber-300 text-sm font-medium mb-6 animate-hero-badge"
             >
               <Compass className="w-4 h-4" />
               Premium African Safari Experiences
-            </motion.span>
+            </span>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white font-serif leading-[1.1]">
               Discover the
@@ -86,25 +78,16 @@ export default function Home() {
                 Book Your Trip
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="flex flex-col items-center gap-2 text-white/60"
-          >
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in-delayed">
+          <div className="flex flex-col items-center gap-2 text-white/60 animate-scroll-bounce">
             <span className="text-xs uppercase tracking-widest">Scroll</span>
             <ChevronDown className="w-5 h-5" />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* Stats Section */}

@@ -43,11 +43,7 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-earth-900/80 via-earth-900/60 to-earth-900/40" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className="animate-hero">
             <span className="inline-block text-sm font-semibold tracking-widest uppercase text-amber-400 mb-3">
               Get in Touch
             </span>
@@ -57,7 +53,7 @@ export default function ContactPage() {
             <p className="mt-4 text-lg text-warm-200 max-w-2xl">
               Ready to start planning your African adventure? We&apos;d love to hear from you.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
